@@ -11,3 +11,10 @@ let z = x--; //
 console.log("x = " + x);
 //console.log("y = " + y);
 console.log("z = " + z);
+
+
+//== & ===
+const g = 5;
+const h = "5";
+console.log(g==h)
+console.log(g===h)
