@@ -8,9 +8,17 @@ const person = {
 console.log("person before: ", person);
 
 //get data
-console.log("age: ", person.age);
-console.log("name: ", person["name1"]) 
+// console.log("age: ", person.age);
+// console.log("name: ", person["name1"]) 
 
 //adding more info - set data
 person.address ="saigon"
-console.log("person after: ", person)
+person["language"] = "vietnamese, english"
+console.log("person after adding: ", person)
+
+
+//detele 
+delete person.address
+console.log("person after deleting: ", person)
+
+
