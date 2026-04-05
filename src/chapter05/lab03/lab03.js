@@ -83,4 +83,4 @@ console.log("7.Dùng filter( ) để lấy các sản phẩm còn hàng (inStock
 console.log("8. Dùng for...in để duyệt qua thuộc tính của sản phẩm đầu tiên: ")
 for (let key in pr1){
     console.log(key, pr1[key])
-}
+}             
