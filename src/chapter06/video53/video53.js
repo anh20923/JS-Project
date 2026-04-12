@@ -10,6 +10,8 @@ myBtnElement.addEventListener("click", () => {
     myTextElement.style.border="solid";
     myTextElement.style.color ="blue";
     myTextElement.style.backgroundColor ="aqua";
+
+    myTextElement.classList.add("Anh", "V")
 })
 
 backBtnElement.addEventListener("click", () => {
@@ -17,4 +19,6 @@ backBtnElement.addEventListener("click", () => {
     myTextElement.style.border="unset";
     myTextElement.style.color ="black";
     myTextElement.style.backgroundColor ="unset";
+
+    myTextElement.classList.remove("Anh", "V")
 })
