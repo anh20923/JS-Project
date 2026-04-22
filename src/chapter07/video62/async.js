@@ -12,7 +12,7 @@ const myPromise = new Promise((resolve, reject) => {
 
 // .then() đăng ký một hành động sẽ làm KHI promise hoàn thành
 myPromise.then((message) => {
-    console.log(message);
+    console.log("message: ", message);
 });
 
 console.log("3. Kết thúc kịch bản chính");
