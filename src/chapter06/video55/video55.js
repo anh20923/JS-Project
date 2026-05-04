@@ -27,7 +27,7 @@ btn.addEventListener("click", () => {
     const newName = input.value;
 
     // lưu dữ liệu mới vào localStorage
-    localStorage.setItem("inputName", newName);
+    localStorage.setItem("name", newName); // localStorage.setItem("inputName", input.value);
 
     // hiển thị tên hiện tại
     currentName.innerHTML = `<b>${newName}</b>`;
