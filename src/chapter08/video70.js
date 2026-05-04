@@ -111,12 +111,39 @@ const generateTodoTable = () => {
                 <tr>
                     <td>${todo.id}</td>
                     <td>${todo.name}</td>
-                    <td><button class="btn-delete">Delete</button></td>
+                    <td> <button class="btn-delete" data-id=${todo.id}> Delete </button> </td>
                 </tr>
                 `
             })
         }
     }  
 }
-
 generateTodoTable();
+
+//Lấy ra id của btn cần xóa
+const deleteBtns = document.querySelectorAll(".btn-delete")
+if(deleteBtns){
+    deleteBtns.forEach((btn, index) => {
+        console.log(btn, index)
+        btn.addEventListener("click", () =>{
+            const id = btn.getAttribute("data-id")
+            handleDeleteTodo(id)
+        })
+    })
+}
+
+//function delete todo
+const handleDeleteTodo = (id) => {
+    const todoListStr = localStorage.getItem("todo")
+    if(todoListStr){
+        const todoList = JSON.parse(todoListStr)
+        //console.log(todoList, id)
+        const newTodo = todoList.filter((todo, index) =>{
+            return todo.id + "" !== id
+        })
+
+        localStorage.setItem("todo",JSON.stringify(newTodo))
+        window.location.reload()
+    }
+}
+    
