@@ -5,8 +5,9 @@ const fetchBlogs = async() => {
     const data = await res.json();
     console.log(data)
 
+    //Insert data to html
+    const tbody = document.querySelector("#blogs tbody")
     if(data && data.length){
-        const tbody = document.querySelector("#blogs tbody")
         data.forEach((blog, index) => {
             tbody.innerHTML += `
             <tr>
@@ -19,11 +20,7 @@ const fetchBlogs = async() => {
                 </td>
             </tr>
         `
-        })
-        
-
+        }) 
     }
-
 }
-
 fetchBlogs()
