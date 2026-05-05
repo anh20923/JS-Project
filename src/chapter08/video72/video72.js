@@ -16,7 +16,7 @@ const fetchBlogs = async() => {
                 <td>${blog.author}</td>
                 <td>${blog.content}</td>
                 <td>
-                    <button>Delete</button>
+                    <button class="delete-blog", data-id="${blog.id}">Delete</button>
                 </td>
             </tr>
         `
@@ -37,7 +37,7 @@ const addNewRowToEnd = (blog) => {
             <td>${blog.author}</td>
             <td>${blog.content}</td>
             <td>
-                <button>Delete</button>
+                <button class="delete-blog", data-id="${blog.id}">Delete</button>
             </td>
         </tr>
     `; 
@@ -75,5 +75,29 @@ const handleAddNewBlog = () => {
 }
 
 
-fetchBlogs()
+const handleDeleteBtns = () => {
+    const btns = document.querySelectorAll(".delete-blog")
+    if(btns){
+        btns.forEach((btn, index) => {
+            btn.addEventListener("click", async() => {
+                const id = btn.getAttribute("data-id")
+
+                //call api to delete a blog
+                const rawResponse = await fetch(`http://localhost:8000/blogs/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                });
+                const data = await rawResponse.json();
+                
+            })
+        })
+    }
+}
+
+fetchBlogs().then(() => {
+    handleDeleteBtns();
+});
 handleAddNewBlog()
