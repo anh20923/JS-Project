@@ -23,4 +23,34 @@ const fetchBlogs = async() => {
         }) 
     }
 }
+
+//
+const handleAddNewBlog = () => {
+    const title = document.getElementById("title")
+    const author = document.getElementById("author")
+    const content = document.getElementById("content")
+    const saveBlogBtn = document.getElementById("saveBlog")
+
+    saveBlogBtn.addEventListener("click", async() =>{
+        //call api to create a new blog
+        const rawResponse = await fetch("http://localhost:8000/blogs", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: title.value,
+                author: author.value,
+                content: content.value
+            })
+        });
+        const data = await rawResponse.json();
+        console.log(data)
+        
+    })
+}
+
+
 fetchBlogs()
+handleAddNewBlog()
