@@ -43,6 +43,27 @@ const addNewRowToEnd = (blog) => {
     `; 
     // Thêm dòng vào cuối bảng 
     tableBody.appendChild(newRow);
+
+    //gán sự kiện onClick cho row vừa tạo
+    const btn = document.querySelector(`[data-id="${blog.id}"]`)
+    btn.addEventListener("click", async() => {
+                const id = btn.getAttribute("data-id")
+
+                //call api to delete a blog
+                const rawResponse = await fetch(`http://localhost:8000/blogs/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                });
+                const data = await rawResponse.json();
+
+                //delete html row
+                const row = btn.closest('tr'); 
+                row.remove();
+                
+            })
 }
 
 
@@ -91,6 +112,10 @@ const handleDeleteBtns = () => {
                     },
                 });
                 const data = await rawResponse.json();
+
+                //delete html row
+                const row = btn.closest('tr'); 
+                row.remove();
                 
             })
         })
