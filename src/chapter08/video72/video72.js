@@ -25,6 +25,28 @@ const fetchBlogs = async() => {
 }
 
 //
+const addNewRowToEnd = (blog) => {
+    const tableBody = document.querySelector('#blogs tbody'); 
+    // Tạo phần tử dòng mới 
+    const newRow = document.createElement('tr'); 
+    // Gán HTML cho dòng 
+    newRow.innerHTML = ` 
+        <tr>
+            <td>${blog.id}</td>
+            <td>${blog.title}</td>
+            <td>${blog.author}</td>
+            <td>${blog.content}</td>
+            <td>
+                <button>Delete</button>
+            </td>
+        </tr>
+    `; 
+    // Thêm dòng vào cuối bảng 
+    tableBody.appendChild(newRow);
+}
+
+
+//
 const handleAddNewBlog = () => {
     const title = document.getElementById("title")
     const author = document.getElementById("author")
@@ -46,6 +68,7 @@ const handleAddNewBlog = () => {
             })
         });
         const data = await rawResponse.json();
+        addNewRowToEnd(data)
         console.log(data)
         
     })
